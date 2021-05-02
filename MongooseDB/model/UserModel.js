@@ -31,6 +31,6 @@ var UserModel = /** @class */ (function () {
       response.json(itemArray);
     });
   };
-  return MessageModel;
+  return UserModel;
 })();
-exports.MessageModel = MessageModel;
+exports.UserModel = UserModel;
