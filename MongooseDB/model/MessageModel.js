@@ -15,12 +15,10 @@ var MessageModel = /** @class */ (function () {
         delivered: Boolean,
         originalText: String,
         translatedText: String,
-        to: User,
-        from: User,
+        userId: Number,
         dateCreated: Date,
-        languageTo: String,
-        languageFrom: String,
-        messageId: String,
+        language: String,
+        messageId: Number,
       },
       { collection: "messages" }
     );
@@ -28,7 +26,7 @@ var MessageModel = /** @class */ (function () {
   MessageModel.prototype.createModel = function () {
     this.model = mongooseConnection.model("Messages", this.schema);
   };
-  MessageModel.prototype.retrieveAllLists = function (response) {
+  MessageModel.prototype.retrieveAllMessages = function (response) {
     var query = this.model.find({});
     query.exec(function (err, itemArray) {
       response.json(itemArray);

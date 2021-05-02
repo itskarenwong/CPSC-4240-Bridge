@@ -14,7 +14,7 @@ var UserModel = /** @class */ (function () {
       {
         email: String,
         password: String,
-        userId: String,
+        userId: Number,
         fname: String,
         lname: String,
         language: String,
@@ -25,10 +25,17 @@ var UserModel = /** @class */ (function () {
   UserModel.prototype.createModel = function () {
     this.model = mongooseConnection.model("Users", this.schema);
   };
-  UserModel.prototype.retrieveAllLists = function (response) {
+  UserModel.prototype.retrieveAllUsers = function (response) {
     var query = this.model.find({});
     query.exec(function (err, itemArray) {
       response.json(itemArray);
+    });
+  };
+
+  UserModel.prototype.retrieveUser = function (response, filter) {
+    var query = this.model.findOne(filter);
+    query.exec(function (err, item) {
+      response.json(item);
     });
   };
   return UserModel;

@@ -1,11 +1,11 @@
 import Mongoose = require("mongoose");
 import { DataAccess } from "./../DataAccess";
-import { IMessageModel } from "../interfaces/IMessageModel";
+import { IUserModel } from "../interfaces/IUserModel";
 
 let mongooseConnection = DataAccess.mongooseConnection;
 let mongooseObj = DataAccess.mongooseInstance;
 
-class MessageModel {
+class UserModel {
   public schema: any;
   public model: any;
 
@@ -17,30 +17,33 @@ class MessageModel {
   public createSchema(): void {
     this.schema = new Mongoose.Schema(
       {
-        delivered: Boolean,
-        originalText: String,
-        translatedText: String,
-        userId: Number,
-        dateCreated: Date,
+        email: String,
+        password: String,
+        userId: String,
+        fname: String,
+        lname: String,
         language: String,
-        messageId: Number,
       },
-      { collection: "messages" }
+      { collection: "users" }
     );
   }
 
   public createModel(): void {
-    this.model = mongooseConnection.model<IMessageModel>(
-      "Messages",
-      this.schema
-    );
+    this.model = mongooseConnection.model<IUserModel>("Users", this.schema);
   }
 
-  public retrieveAllMessages(response: any): any {
+  public retrieveAllUsers(response: any): any {
     var query = this.model.find({});
     query.exec((err, itemArray) => {
       response.json(itemArray);
     });
   }
+
+  public retrieveUser(response: any, filter: Object) {
+    var query = this.model.findOne(filter);
+    query.exec((err, item) => {
+      response.json(item);
+    });
+  }
 }
-export { MessageModel };
+export { UserModel };
