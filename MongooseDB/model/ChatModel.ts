@@ -64,11 +64,11 @@ class ChatModel {
   public model: any;
   chats: Map<Number, Array<User>>;
   messages: Map<Number, Array<Message>>;
-  public constructor() {
+  public constructor(chats: Map<Number, Array<User>>, messages: Map<Number, Array<Message>>) {
     this.createSchema();
     this.createModel();
-    this.chats = new Map();
-    this.messages = new Map();
+    this.chats = chats;
+    this.messages = messages;
   }
 
   public createSchema(): void {

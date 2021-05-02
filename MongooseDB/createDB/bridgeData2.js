@@ -41,3 +41,16 @@ message.insert(
         messageId: 3
     }
 )
+message.insert(
+    {
+        delivered: true,
+        originalText: "Avez-vous étudié pour l'examen?",
+        translatedText: "¿Has estudiado para el examen?",
+        userId: 4,
+        friendId: 1,
+        dateCreated: Date.now(),
+        languageTo: "fr",
+        languageFrom: "es",
+        messageId: 4
+    }
+)
