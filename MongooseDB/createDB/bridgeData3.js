@@ -4,8 +4,8 @@ db = db.getSiblingDB('bridgeSample')
 db.createCollection('chats')
 chat = db.getCollection("chats")
 chat.remove({})
-var userOne = new User("andrea@andrea.com", "boba", 1, "Andrea", "Callista", "es");
-var userTwo = new User("karen@karen.com", "bts", 2, "Karen", "Wong", "id");
+var userOne = new User("andrea@andrea.com", "callista", 1, "Andrea", "Callista", "es");
+var userTwo = new User("karen@karen.com", "wong", 2, "Karen", "Wong", "id");
 var userThree = new User("megan@megan.com", "gao", 3, "Megan", "Gao", "en");
 var userFour = new User("nathan@nathan.com", "nishi", 4, "Nathan", "Nishi", "fr");
 var messageOne = new Message(true, "¿Cómo estás?", "Apa kabar?", 1, 2, Date.now(), "es", "id", 1);
@@ -24,21 +24,15 @@ chat.insert(
 chat.insert(
     {
         chatId: 2,
-        messages: mapMessageTwo,
-
     }
 )
 chat.insert(
     {
         chatId: 3,
-        messages: mapMessageThree,
-
     }
 )
 chat.insert(
     {
         chatId: 4,
-        messages: mapMessageFour,
-
     }
 )

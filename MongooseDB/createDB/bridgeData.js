@@ -5,7 +5,7 @@ user.remove({})
 user.insert(
     {
         email: "andrea@andrea.com",
-        password: "boba",
+        password: "callista",
         userId: 1,
         fname: "Andrea",
         lname: "Callista",
@@ -15,7 +15,7 @@ user.insert(
 user.insert(
     {
         email: "karen@karen.com",
-        password: "bts",
+        password: "wong",
         userId: 2,
         fname: "Karen",
         lname: "Wong",
