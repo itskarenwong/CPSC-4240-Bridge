@@ -5,8 +5,11 @@ var logger = require("morgan");
 var bodyParser = require("body-parser");
 //var MongoClient = require('mongodb').MongoClient;
 //var Q = require('q');
-var ListModel_1 = require("./model/ListModel");
-var TaskModel_1 = require("./model/TaskModel");
+var ChatModel_1 = require("./model/ChatModel");
+var FriendListModel_1 = require("./model/FriendListModel");
+var UserModel_1 = require("./model/UserModel");
+var MessageModel_1 = require("./model/MessageModel");
+
 // Creates and configures an ExpressJS web server.
 var App = /** @class */ (function () {
     //Run configuration methods on the Express instance.
@@ -15,8 +18,10 @@ var App = /** @class */ (function () {
         this.middleware();
         this.routes();
         this.idGenerator = 100;
-        this.Lists = new ListModel_1.ListModel();
-        this.Tasks = new TaskModel_1.TaskModel();
+        this.Chat = new ChatModel_1.ChatModel();
+        this.FriendListModel_1 = new FriendListModel_1.FriendListModel();
+        this.UserModel_1 = new UserModel_1.UserModel();
+        this.MessageModel_1 = new MessageModel_1.MessageModel();
     }
     // Configure Express middleware.
     App.prototype.middleware = function () {
