@@ -1,7 +1,8 @@
 import Mongoose = require("mongoose");
-import { IUserModel } from "../interfaces/IUserModel";
+import { User } from "../model/ChatModel";
+
 
 interface IFriendListModel extends Mongoose.Document {
-  users: IUserModel;
+  friends: Map<Number, Array<User>>;
 }
 export { IFriendListModel };

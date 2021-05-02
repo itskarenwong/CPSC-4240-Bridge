@@ -42,15 +42,15 @@ class FriendListModel {
   public createSchema(): void {
     this.schema = new Mongoose.Schema(
       {
-        users: this.userList,
+        friends: this.userList,
       },
-      { collection: "friend lists" }
+      { collection: "friends" }
     );
   }
 
   public createModel(): void {
     this.model = mongooseConnection.model<IFriendListModel>(
-      "Friend Lists",
+      "FriendList",
       this.schema
     );
   }

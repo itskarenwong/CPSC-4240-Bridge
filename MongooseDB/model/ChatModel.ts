@@ -94,3 +94,4 @@ class ChatModel {
   }
 }
 export { ChatModel };
+export { User };
