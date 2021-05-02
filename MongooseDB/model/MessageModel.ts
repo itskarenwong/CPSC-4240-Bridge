@@ -21,6 +21,7 @@ class MessageModel {
         originalText: String,
         translatedText: String,
         userId: Number,
+        friendId: Number,
         dateCreated: Date,
         language: String,
         messageId: Number,

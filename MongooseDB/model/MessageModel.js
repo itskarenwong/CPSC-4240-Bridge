@@ -16,6 +16,7 @@ var MessageModel = /** @class */ (function () {
         originalText: String,
         translatedText: String,
         userId: Number,
+        friendId: Number,
         dateCreated: Date,
         language: String,
         messageId: Number,
