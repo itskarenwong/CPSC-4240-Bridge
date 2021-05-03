@@ -33,7 +33,7 @@ user.insert(
         lname: "Gao",
         language: "en",
         chats: [2, 3],
-    },
+    }
 )
 user.insert(
     {

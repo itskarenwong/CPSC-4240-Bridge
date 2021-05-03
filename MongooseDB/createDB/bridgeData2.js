@@ -65,6 +65,6 @@ message.insert(
         languageTo: "es",
         languageFrom: "id",
         messageId: 5,
-    },
+    }
 )
 
