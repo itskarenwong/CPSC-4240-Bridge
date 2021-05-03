@@ -5,124 +5,28 @@ friendList.remove({})
 // Andrea's friend list
 friendList.insert(
     {
-        friends: new Map(1, [
-            {
-                email: "karen@karen.com",
-                password: "wong",
-                userId: 2,
-                fname: "Karen",
-                lname: "Wong",
-                language: "id",
-            },
-            {
-                email: "megan@megan.com",
-                password: "gao",
-                userId: 3,
-                fname: "Megan",
-                lname: "Gao",
-                language: "en",
-            },
-            {
-                email: "nathan@nathan.com",
-                password: "nishi",
-                userId: 4,
-                fname: "Nathan",
-                lname: "Nishi",
-                language: "fr",
-            },
-        ]),
+        friends: [2, 3, 4],
+        userId: 1,
     }
 )
 // Karen's friend list
 friendList.insert(
     {
-        friends: new Map(2, [
-            {
-                email: "andrea@andrea.com",
-                password: "callista",
-                userId: 1,
-                fname: "Andrea",
-                lname: "Callista",
-                language: "es",
-            },
-            {
-                email: "megan@megan.com",
-                password: "gao",
-                userId: 3,
-                fname: "Megan",
-                lname: "Gao",
-                language: "en",
-            },
-            {
-                email: "nathan@nathan.com",
-                password: "nishi",
-                userId: 4,
-                fname: "Nathan",
-                lname: "Nishi",
-                language: "fr",
-            },
-        ]),
+        friends: [1, 3, 4],
+        userId: 2,
     }
 )
 // Megan's friend list
 friendList.insert(
     {
-        friends: new Map(3, [
-            {
-                email: "karen@karen.com",
-                password: "wong",
-                userId: 2,
-                fname: "Karen",
-                lname: "Wong",
-                language: "id",
-            },
-            {
-                email: "andrea@andrea.com",
-                password: "callista",
-                userId: 1,
-                fname: "Andrea",
-                lname: "Callista",
-                language: "es",
-            },
-            {
-                email: "nathan@nathan.com",
-                password: "nishi",
-                userId: 4,
-                fname: "Nathan",
-                lname: "Nishi",
-                language: "fr",
-            },
-        ]),
+        friends: [2, 1, 4],
+        userId: 3,
     }
 )
 // Nathan's friend list
 friendList.insert(
     {
-        friends: new Map(4, [
-            {
-                email: "karen@karen.com",
-                password: "wong",
-                userId: 2,
-                fname: "Karen",
-                lname: "Wong",
-                language: "id",
-            },
-            {
-                email: "megan@megan.com",
-                password: "gao",
-                userId: 3,
-                fname: "Megan",
-                lname: "Gao",
-                language: "en",
-            },
-            {
-                email: "andrea@andrea.com",
-                password: "callista",
-                userId: 1,
-                fname: "Andrea",
-                lname: "Callista",
-                language: "es",
-            },
-        ]),
+        friends: [2, 3, 1],
+        userId: 4,
     }
 )

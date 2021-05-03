@@ -9,7 +9,8 @@ user.insert(
         userId: 1,
         fname: "Andrea",
         lname: "Callista",
-        language: "es"
+        language: "es",
+        chats: [1, 4],
     }
 )
 user.insert(
@@ -19,7 +20,8 @@ user.insert(
         userId: 2,
         fname: "Karen",
         lname: "Wong",
-        language: "id"
+        language: "id",
+        chats: [1, 2],
     }
 )
 user.insert(
@@ -29,8 +31,9 @@ user.insert(
         userId: 3,
         fname: "Megan",
         lname: "Gao",
-        language: "en"
-    }
+        language: "en",
+        chats: [2, 3],
+    },
 )
 user.insert(
     {
@@ -39,6 +42,7 @@ user.insert(
         userId: 4,
         fname: "Nathan",
         lname: "Nishi",
-        language: "fr"
+        language: "fr",
+        chats: [3, 4],
     }
 )
