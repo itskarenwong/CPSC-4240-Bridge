@@ -62,9 +62,9 @@ class Message {
 class ChatModel {
   public schema: any;
   public model: any;
-  chats: Map<Number, Array<User>>;
-  messages: Map<Number, Array<Message>>;
-  public constructor(chats: Map<Number, Array<User>>, messages: Map<Number, Array<Message>>) {
+  chats: Array<Number>; // array of user ids
+  messages: Array<Number>; // array of message ids
+  public constructor(chats: Array<Number>, messages: Array<Number>) {
     this.createSchema();
     this.createModel();
     this.chats = chats;

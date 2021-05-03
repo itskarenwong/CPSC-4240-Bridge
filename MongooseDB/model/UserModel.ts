@@ -8,10 +8,12 @@ let mongooseObj = DataAccess.mongooseInstance;
 class UserModel {
   public schema: any;
   public model: any;
+  chats: Array<Number>; // array of chat ids
 
-  public constructor() {
+  public constructor(chats: Array<Number>) {
     this.createSchema();
     this.createModel();
+    this.chats = chats;
   }
 
   public createSchema(): void {
@@ -23,6 +25,7 @@ class UserModel {
         fname: String,
         lname: String,
         language: String,
+        chats: this.chats,
       },
       { collection: "users" }
     );
