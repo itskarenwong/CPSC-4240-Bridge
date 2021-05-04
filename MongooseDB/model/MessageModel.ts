@@ -25,6 +25,7 @@ class MessageModel {
         dateCreated: Date,
         language: String,
         messageId: Number,
+        chatId: Number
       },
       { collection: "messages" }
     );

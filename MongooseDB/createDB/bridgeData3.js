@@ -6,28 +6,40 @@ chat.remove({})
 chat.insert(
     {
         chatId: 1,
-        users: [1, 2],
-        messages: [1, 5],
+        users: [{
+            userId: 1
+        }, {
+            userId: 2
+        }]
     }
 )
 chat.insert(
     {
         chatId: 2,
-        users: [2, 3],
-        messages: [1],
+        users: [{
+            userId: 2
+        }, {
+            userId: 3
+        }]
     }
 )
 chat.insert(
     {
         chatId: 3,
-        users: [3, 4],
-        messages: [3],
+        users: [{
+            userId: 3
+        }, {
+            userId: 4
+        }]
     }
 )
 chat.insert(
     {
         chatId: 4,
-        users: [4, 1],
-        messages: [4],
+        users: [{
+            userId: 4
+        }, {
+            userId: 1
+        }]
     }
 )

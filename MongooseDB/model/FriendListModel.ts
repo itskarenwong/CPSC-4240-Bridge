@@ -7,21 +7,22 @@ let mongooseObj = DataAccess.mongooseInstance;
 class FriendListModel {
   public schema: any;
   public model: any;
-  friends: Array<Number>;
 
   public constructor(friends: Array<Number>) {
     this.createSchema();
     this.createModel();
-    this.friends = friends;
   }
 
   public createSchema(): void {
     this.schema = new Mongoose.Schema(
       {
         userId: Number,
-        friends: this.friends,
-      },
-      { collection: "friends" }
+        friends: [
+          {
+            friendId: Number,
+          }
+        ]
+      }, { collection: "friends" }
     );
   }
 

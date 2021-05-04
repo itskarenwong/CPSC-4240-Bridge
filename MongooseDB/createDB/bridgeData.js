@@ -10,7 +10,11 @@ user.insert(
         fname: "Andrea",
         lname: "Callista",
         language: "es",
-        chats: [1, 4],
+        chats: [{
+            chatId: 1
+        }, {
+            chatId: 4
+        }]
     }
 )
 user.insert(
@@ -21,7 +25,11 @@ user.insert(
         fname: "Karen",
         lname: "Wong",
         language: "id",
-        chats: [1, 2],
+        chats: [{
+            chatId: 1
+        }, {
+            chatId: 2
+        }]
     }
 )
 user.insert(
@@ -32,7 +40,11 @@ user.insert(
         fname: "Megan",
         lname: "Gao",
         language: "en",
-        chats: [2, 3],
+        chats: [{
+            chatId: 2
+        }, {
+            chatId: 3
+        }]
     }
 )
 user.insert(
@@ -43,6 +55,10 @@ user.insert(
         fname: "Nathan",
         lname: "Nishi",
         language: "fr",
-        chats: [3, 4],
+        chats: [{
+            chatId: 3
+        }, {
+            chatId: 4
+        }]
     }
 )

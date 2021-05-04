@@ -1,9 +1,9 @@
 import Mongoose = require("mongoose");
-import { User } from "../model/ChatModel";
-
 
 interface IFriendListModel extends Mongoose.Document {
-  friends: Array<Number>;
-  userId: Number;
+  userId: number;
+  friends: [{
+      friendId: number;
+  }];
 }
 export { IFriendListModel };

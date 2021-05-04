@@ -12,7 +12,8 @@ message.insert(
         dateCreated: Date.now(),
         languageTo: "id",
         languageFrom: "es",
-        messageId: 1
+        messageId: 1,
+        chatId: 1
     }
 )
 message.insert(
@@ -25,7 +26,8 @@ message.insert(
         dateCreated: Date.now(),
         languageTo: "en",
         languageFrom: "id",
-        messageId: 2
+        messageId: 2,
+        chatId: 2
     }
 )
 message.insert(
@@ -38,7 +40,8 @@ message.insert(
         dateCreated: Date.now(),
         languageTo: "fr",
         languageFrom: "en",
-        messageId: 3
+        messageId: 3,
+        chatId: 3
     }
 )
 message.insert(
@@ -51,7 +54,8 @@ message.insert(
         dateCreated: Date.now(),
         languageTo: "es",
         languageFrom: "fr",
-        messageId: 4
+        messageId: 4,
+        chatId: 4
     }
 )
 message.insert(
@@ -65,6 +69,7 @@ message.insert(
         languageTo: "es",
         languageFrom: "id",
         messageId: 5,
+        chatId: 1
     }
 )
 

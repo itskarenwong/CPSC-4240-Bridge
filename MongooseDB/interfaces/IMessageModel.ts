@@ -1,14 +1,14 @@
 import Mongoose = require("mongoose");
-import {IUserModel} from '../interfaces/IUserModel';
 
 interface IMessageModel extends Mongoose.Document {
-    delivered: Boolean;
-    originalText: String;
-    translatedText: String;
-    userId: Number;
-    dateCreated: Date;
-    languageTo: String;
-    languageFrom: String;
-    messageId: String;
+    delivered: boolean;
+    originalText: string;
+    translatedText: string;
+    userId: number;
+    dateCreated: string;
+    languageTo: string;
+    languageFrom: string;
+    messageId: string;
+    chatId: number;
 }
 export {IMessageModel};
