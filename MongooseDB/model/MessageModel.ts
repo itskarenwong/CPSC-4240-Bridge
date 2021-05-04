@@ -38,10 +38,30 @@ class MessageModel {
     );
   }
 
-  public retrieveAllMessages(response: any): any {
+  public sendMessage(message): void {
+    console.log('testing to see if message was added to database');
+    console.log(message);
+    //var query =
+    this.model.create(message);
+    //query.exec();
+  }
+  public retrieveAllMessages(response:any, filter:Object) {
+    var query = this.model.find(filter);
+    query.exec( (err, itemArray) => {
+        response.json(itemArray) ;
+    });
+  }
+  public retrieveAll(response:any): any {
     var query = this.model.find({});
-    query.exec((err, itemArray) => {
-      response.json(itemArray);
+    query.exec( (err, itemArray) => {
+        response.json(itemArray) ;
+    });
+  }
+
+  public retrieveChat(response:any, filter:Object) {
+    var query = this.model.findOne(filter);
+    query.exec ( (err, item) => {
+        response.json(item);
     });
   }
 }

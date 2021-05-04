@@ -8,7 +8,7 @@ class FriendListModel {
   public schema: any;
   public model: any;
 
-  public constructor(friends: Array<Number>) {
+  public constructor() {
     this.createSchema();
     this.createModel();
   }

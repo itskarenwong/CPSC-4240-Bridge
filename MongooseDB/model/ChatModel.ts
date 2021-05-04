@@ -31,10 +31,16 @@ class ChatModel {
     this.model = mongooseConnection.model<IChatModel>("Chats", this.schema);
   }
 
-  public retrieveAllMessages(response: any): any {
+  public retrieveAllChats(response: any): any {
     var query = this.model.find({});
     query.exec((err, itemArray) => {
       response.json(itemArray);
+    });
+  }
+  public retrieveChat(response:any, filter:Object) {
+    var query = this.model.findOne(filter);
+    query.exec ( (err, item) => {
+        response.json(item);
     });
   }
 }

@@ -9,7 +9,7 @@ class UserModel {
   public schema: any;
   public model: any;
 
-  public constructor(chats: Array<Number>) {
+  public constructor() {
     this.createSchema();
     this.createModel();
   }
@@ -19,7 +19,7 @@ class UserModel {
       {
         email: String,
         password: String,
-        userId: String,
+        userId: Number,
         fname: String,
         lname: String,
         language: String,
@@ -42,6 +42,7 @@ class UserModel {
     query.exec((err, itemArray) => {
       response.json(itemArray);
     });
+    console.log(response);
   }
 
   public retrieveUser(response: any, filter: Object) {
