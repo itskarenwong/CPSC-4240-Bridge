@@ -48,5 +48,11 @@ class UserModel {
       response.json(item);
     });
   }
+  public retrieveAllChats(response: any): any {
+    var query = this.model.find({});
+    query.exec((err, itemArray) => {
+      response.json(itemArray);
+    });
+  }
 }
 export { UserModel };

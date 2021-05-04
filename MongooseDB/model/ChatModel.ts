@@ -86,7 +86,7 @@ class ChatModel {
     this.model = mongooseConnection.model<IChatModel>("Chats", this.schema);
   }
 
-  public retrieveAllChats(response: any): any {
+  public retrieveAllMessages(response: any): any {
     var query = this.model.find({});
     query.exec((err, itemArray) => {
       response.json(itemArray);
