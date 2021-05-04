@@ -33,6 +33,14 @@ body{
     border-left: 1px solid #eaeaea
 }
 
+.people-header {
+    padding: 15px 20px;
+}
+
+#new-message-button {
+    padding-top: 10px;
+}
+
 .people-list {
     -moz-transition: .5s;
     -o-transition: .5s;
@@ -56,7 +64,7 @@ body{
 }
 
 .people-list .chat-list li .name {
-    font-size: 15px
+    font-size: 1rem;
 }
 
 .people-list .chat-list img {
@@ -76,7 +84,7 @@ body{
 
 .people-list .status {
     color: #999;
-    font-size: 13px
+    font-size: 0.8rem;
 }
 
 .chat .chat-header {
@@ -124,14 +132,15 @@ body{
 
 .chat .chat-history .message-data-time {
     color: #434651;
-    padding-left: 6px
+    padding-left: 6px;
+    font-size: 0.75rem;
 }
 
 .chat .chat-history .message {
     color: #444;
     padding: 18px 20px;
     line-height: 26px;
-    font-size: 16px;
+    font-size: 1rem;
     border-radius: 7px;
     display: inline-block;
     position: relative
