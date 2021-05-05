@@ -25,7 +25,7 @@ class MessageModel {
         dateCreated: Date,
         language: String,
         messageId: Number,
-        chatId: Number
+        chatId: Number,
       },
       { collection: "messages" }
     );
@@ -40,31 +40,39 @@ class MessageModel {
 
   public sendMessage(message): any {
     this.model.create([message], (err) => {
-        if (err) {
-            console.log('object creation failed');
-            return false;
-        } 
-        return true;
+      if (err) {
+        console.log("object creation failed");
+        return false;
+      }
+      return true;
     });
   }
 
-  public retrieveAllMessages(response:any, filter:Object) {
+  public retrieveAllMessages(response: any, filter: Object) {
     var query = this.model.find(filter);
-    query.exec( (err, itemArray) => {
-        response.json(itemArray) ;
-    });
-  }
-  public retrieveAll(response:any): any {
-    var query = this.model.find({});
-    query.exec( (err, itemArray) => {
-        response.json(itemArray) ;
+    query.exec((err, itemArray) => {
+      response.json(itemArray);
     });
   }
 
-  public retrieveChat(response:any, filter:Object) {
+  public retrieveMessage(response: any, filter: Object) {
     var query = this.model.findOne(filter);
-    query.exec ( (err, item) => {
-        response.json(item);
+    query.exec((err, item) => {
+      response.json(item);
+    });
+  }
+
+  public retrieveAll(response: any): any {
+    var query = this.model.find({});
+    query.exec((err, itemArray) => {
+      response.json(itemArray);
+    });
+  }
+
+  public retrieveChat(response: any, filter: Object) {
+    var query = this.model.findOne(filter);
+    query.exec((err, item) => {
+      response.json(item);
     });
   }
 }

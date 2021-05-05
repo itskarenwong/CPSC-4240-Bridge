@@ -29,7 +29,7 @@ var MessageModel = /** @class */ (function () {
     MessageModel.prototype.sendMessage = function (message) {
         this.model.create([message], function (err) {
             if (err) {
-                console.log('object creation failed');
+                console.log("object creation failed");
                 return false;
             }
             return true;
@@ -39,6 +39,12 @@ var MessageModel = /** @class */ (function () {
         var query = this.model.find(filter);
         query.exec(function (err, itemArray) {
             response.json(itemArray);
+        });
+    };
+    MessageModel.prototype.retrieveMessage = function (response, filter) {
+        var query = this.model.findOne(filter);
+        query.exec(function (err, item) {
+            response.json(item);
         });
     };
     MessageModel.prototype.retrieveAll = function (response) {
