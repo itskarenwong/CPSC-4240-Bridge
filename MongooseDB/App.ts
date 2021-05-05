@@ -55,6 +55,7 @@ class App {
       );
       next();
     });
+
     //route to return JSON of all users
     router.get("/users", (req, res) => {
       console.log("Query all users");
@@ -81,13 +82,14 @@ class App {
       this.Chat.retrieveChat(res, { chatId: id });
     });
 
-    //route to return JSON of messages by chat
+    //route to return JSON of messages by chatID
     router.get("/messages/:chatId", (req, res) => {
       var id = req.params.chatId;
       console.log("Query messages from chatId:" + id);
-      this.Message.retrieveAllMessages(res, { chatId: id });
+      this.Message.retrieveAllMessagesByChatId(res, { chatId: id });
     });
 
+    //route to return JSON of a single message
     router.get("/messages/message/:messageId", (req, res) => {
       var id = req.params.messageId;
       console.log("Query a single message:" + id);

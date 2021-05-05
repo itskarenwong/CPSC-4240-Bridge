@@ -64,12 +64,13 @@ var App = /** @class */ (function () {
             console.log("Query a chat with id:" + id);
             _this.Chat.retrieveChat(res, { chatId: id });
         });
-        //route to return JSON of messages by chat
+        //route to return JSON of messages by chatID
         router.get("/messages/:chatId", function (req, res) {
             var id = req.params.chatId;
             console.log("Query messages from chatId:" + id);
-            _this.Message.retrieveAllMessages(res, { chatId: id });
+            _this.Message.retrieveAllMessagesByChatId(res, { chatId: id });
         });
+        //route to return JSON of a single message
         router.get("/messages/message/:messageId", function (req, res) {
             var id = req.params.messageId;
             console.log("Query a single message:" + id);

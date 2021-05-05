@@ -41,12 +41,6 @@ var UserModel = /** @class */ (function () {
             response.json(item);
         });
     };
-    UserModel.prototype.retrieveAllChats = function (response) {
-        var query = this.model.find({});
-        query.exec(function (err, itemArray) {
-            response.json(itemArray);
-        });
-    };
     return UserModel;
 }());
 exports.UserModel = UserModel;
