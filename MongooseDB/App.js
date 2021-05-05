@@ -37,6 +37,11 @@ var App = /** @class */ (function () {
     App.prototype.routes = function () {
         var _this = this;
         var router = express.Router();
+        router.use(function (req, res, next) {
+            res.header("Access-Control-Allow-Origin", "*");
+            res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+            next();
+        });
         //route to return JSON of all users
         router.get("/users", function (req, res) {
             console.log("Query all users");
@@ -48,6 +53,11 @@ var App = /** @class */ (function () {
             console.log("Query a user with id:" + id);
             _this.User.retrieveUser(res, { userId: id });
         });
+        // route to return JSON of chat objects
+        router.get("/chats", function (req, res) {
+            console.log("Query all chats:");
+            _this.Chat.retrieveAllChats(res);
+        });
         // route to return a unique chat based on ID
         router.get("/chats/:chatId", function (req, res) {
             var id = req.params.chatId;
@@ -56,12 +66,12 @@ var App = /** @class */ (function () {
         });
         //route to return JSON of messages by chat
         router.get("/messages/:chatId", function (req, res) {
-            var id = req.params.chat_id;
+            var id = req.params.chatId;
             console.log("Query messages from chat:" + id);
             _this.Message.retrieveAllMessages(res, { chatId: id });
         });
         //route to return JSON of all messages
-        router.get("/messages/", function (req, res) {
+        router.get("/messages", function (req, res) {
             console.log("Query all messages");
             _this.Message.retrieveAll(res);
         });
@@ -71,12 +81,6 @@ var App = /** @class */ (function () {
             console.log(req.body);
             _this.Message.sendMessage(req.body);
             res.send("201 CREATED");
-        });
-        //route to return JSON of a single message
-        router.get("/messages/:messageId", function (req, res) {
-            var id = req.params.message_id;
-            console.log("Query a single message:" + id);
-            _this.Message.retrieveMessage(res, { messageId: id });
         });
         this.expressApp.use("/", router);
         this.expressApp.use("/app/json/", express.static(__dirname + "/app/json"));

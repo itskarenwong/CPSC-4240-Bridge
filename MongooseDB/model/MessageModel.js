@@ -41,12 +41,6 @@ var MessageModel = /** @class */ (function () {
             response.json(itemArray);
         });
     };
-    MessageModel.prototype.retrieveMessage = function (response, filter) {
-        var query = this.model.findOne(filter);
-        query.exec(function (err, item) {
-            response.json(item);
-        });
-    };
     MessageModel.prototype.retrieveAll = function (response) {
         var query = this.model.find({});
         query.exec(function (err, itemArray) {
