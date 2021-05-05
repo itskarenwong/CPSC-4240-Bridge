@@ -41,7 +41,7 @@ var MessageModel = /** @class */ (function () {
             response.json(itemArray);
         });
     };
-    MessageModel.prototype.retrieveAll = function (response) {
+    MessageModel.prototype.retrieveAllMessages = function (response) {
         var query = this.model.find({});
         query.exec(function (err, itemArray) {
             response.json(itemArray);

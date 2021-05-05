@@ -65,13 +65,13 @@ var App = /** @class */ (function () {
             _this.Chat.retrieveChat(res, { chatId: id });
         });
         //route to return JSON of messages by chatID
-        router.get("/messages/:chatId", function (req, res) {
+        router.get("/chats/:chatId/messages", function (req, res) {
             var id = req.params.chatId;
             console.log("Query messages from chatId:" + id);
             _this.Message.retrieveAllMessagesByChatId(res, { chatId: id });
         });
         //route to return JSON of a single message
-        router.get("/messages/message/:messageId", function (req, res) {
+        router.get("/messages/:messageId", function (req, res) {
             var id = req.params.messageId;
             console.log("Query a single message:" + id);
             _this.Message.retrieveMessage(res, { messageId: id });
@@ -79,7 +79,7 @@ var App = /** @class */ (function () {
         //route to return JSON of all messages
         router.get("/messages", function (req, res) {
             console.log("Query all messages");
-            _this.Message.retrieveAll(res);
+            _this.Message.retrieveAllMessages(res);
         });
         // route to post JSON of a message
         router.post("/messages/", function (req, res) {
