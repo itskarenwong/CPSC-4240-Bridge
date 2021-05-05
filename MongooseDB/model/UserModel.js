@@ -33,6 +33,7 @@ var UserModel = /** @class */ (function () {
         query.exec(function (err, itemArray) {
             response.json(itemArray);
         });
+        console.log(response);
     };
     UserModel.prototype.retrieveUser = function (response, filter) {
         var query = this.model.findOne(filter);

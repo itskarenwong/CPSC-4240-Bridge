@@ -54,7 +54,6 @@ var App = /** @class */ (function () {
             console.log("Query a chat with id:" + id);
             _this.Chat.retrieveChat(res, { chatId: id });
         });
-
         //route to return JSON of messages by chat
         router.get('/messages/:chatId', function (req, res) {
             var id = req.params.chat_id;
@@ -70,10 +69,6 @@ var App = /** @class */ (function () {
         router.post("/messages/:chatId", function (req, res) {
             console.log("sending a message");
             _this.Message.sendMessage(req.body);
-        });
-        router.get('/app/listcount', function (req, res) {
-            console.log('Query the number of list elements in db');
-            _this.Lists.retrieveListCount(res);
         });
         this.expressApp.use('/', router);
         this.expressApp.use('/app/json/', express.static(__dirname + '/app/json'));
