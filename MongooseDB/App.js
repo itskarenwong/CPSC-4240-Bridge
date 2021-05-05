@@ -9,8 +9,10 @@ var logger = require("morgan");
 var bodyParser = require("body-parser");
 //var MongoClient = require('mongodb').MongoClient;
 //var Q = require('q');
-var ListModel_1 = require("./model/ListModel");
-var TaskModel_1 = require("./model/TaskModel");
+var UserModel_1 = require("./model/UserModel");
+var MessageModel_1 = require("./model/MessageModel");
+var ChatModel_1 = require("./model/ChatModel");
+var FriendListModel_1 = require("./model/FriendListModel");
 //import {DataAccess} from './DataAccess';
 // Creates and configures an ExpressJS web server.
 var App = /** @class */ (function () {
@@ -20,8 +22,10 @@ var App = /** @class */ (function () {
         this.middleware();
         this.routes();
         this.idGenerator = 102;
-        this.Lists = new ListModel_1.ListModel();
-        this.Tasks = new TaskModel_1.TaskModel();
+        this.User = new UserModel_1.UserModel();
+        this.Message = new MessageModel_1.MessageModel();
+        this.Chat = new ChatModel_1.ChatModel();
+        this.FriendList = new FriendListModel_1.FriendListModel();
     }
     // Configure Express middleware.
     App.prototype.middleware = function () {
@@ -33,31 +37,39 @@ var App = /** @class */ (function () {
     App.prototype.routes = function () {
         var _this = this;
         var router = express.Router();
-        router.get('/app/list/:listId/count', function (req, res) {
-            var id = req.params.listId;
-            console.log('Query single list with id: ' + id);
-            _this.Tasks.retrieveTasksCount(res, { listId: id });
+        //route to return JSON of all users
+        router.get('/users', function (req, res) {
+            console.log("Query all users");
+            _this.User.retrieveAllUsers(res);
         });
-        router.post('/app/list/', function (req, res) {
-            console.log(req.body);
-            var jsonObj = req.body;
-            //jsonObj.listId = this.idGenerator;
-            _this.Lists.model.create([jsonObj], function (err) {
-                if (err) {
-                    console.log('object creation failed');
-                }
-            });
-            res.send(_this.idGenerator.toString());
-            _this.idGenerator++;
+        //route to return JSON of a single user
+        router.get('/users/:userId', function (req, res) {
+            var id = req.params.userId;
+            console.log("Query a user with id:" + id);
+            _this.User.retrieveUser(res, { userId: id });
         });
-        router.get('/app/list/:listId', function (req, res) {
-            var id = req.params.listId;
-            console.log('Query single list with id: ' + id);
-            _this.Tasks.retrieveTasksDetails(res, { listId: id });
+        // route to return a unique chat based on ID
+        router.get('/chats/:chatId', function (req, res) {
+            var id = req.params.chatId;
+            console.log("Query a chat with id:" + id);
+            _this.Chat.retrieveChat(res, { chatId: id });
         });
-        router.get('/app/list/', function (req, res) {
-            console.log('Query All list');
-            _this.Lists.retrieveAllLists(res);
+
+        //route to return JSON of messages by chat
+        router.get('/messages/:chatId', function (req, res) {
+            var id = req.params.chat_id;
+            console.log("Query messages from chat:" + id);
+            _this.Message.retrieveAllMessages(res, { chatId: id });
+        });
+        //route to return JSON of all messages
+        router.get('/messages', function (req, res) {
+            console.log("Query all messages");
+            _this.Message.retrieveAll(res);
+        });
+        // route to post JSON of a message
+        router.post("/messages/:chatId", function (req, res) {
+            console.log("sending a message");
+            _this.Message.sendMessage(req.body);
         });
         router.get('/app/listcount', function (req, res) {
             console.log('Query the number of list elements in db');
