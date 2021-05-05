@@ -27,11 +27,13 @@ var MessageModel = /** @class */ (function () {
         this.model = mongooseConnection.model("Messages", this.schema);
     };
     MessageModel.prototype.sendMessage = function (message) {
-        console.log('testing to see if message was added to database');
-        console.log(message);
-        //var query =
-        this.model.create(message);
-        //query.exec();
+        this.model.create([message], function (err) {
+            if (err) {
+                console.log('object creation failed');
+                return false;
+            }
+            return true;
+        });
     };
     MessageModel.prototype.retrieveAllMessages = function (response, filter) {
         var query = this.model.find(filter);

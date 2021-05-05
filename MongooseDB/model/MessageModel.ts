@@ -38,13 +38,16 @@ class MessageModel {
     );
   }
 
-  public sendMessage(message): void {
-    console.log('testing to see if message was added to database');
-    console.log(message);
-    //var query =
-    this.model.create(message);
-    //query.exec();
+  public sendMessage(message): any {
+    this.model.create([message], (err) => {
+        if (err) {
+            console.log('object creation failed');
+            return false;
+        } 
+        return true;
+    });
   }
+
   public retrieveAllMessages(response:any, filter:Object) {
     var query = this.model.find(filter);
     query.exec( (err, itemArray) => {
