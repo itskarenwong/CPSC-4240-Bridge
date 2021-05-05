@@ -61,14 +61,16 @@ var App = /** @class */ (function () {
             _this.Message.retrieveAllMessages(res, { chatId: id });
         });
         //route to return JSON of all messages
-        router.get('/messages', function (req, res) {
+        router.get('/messages/', function (req, res) {
             console.log("Query all messages");
             _this.Message.retrieveAll(res);
         });
         // route to post JSON of a message
-        router.post("/messages/:chatId", function (req, res) {
-            console.log("sending a message");
+        router.post("/messages/", function (req, res) {
+            console.log('testing to see if message was added to database');
+            console.log(req.body);
             _this.Message.sendMessage(req.body);
+            res.send("201 CREATED");
         });
         this.expressApp.use('/', router);
         this.expressApp.use('/app/json/', express.static(__dirname + '/app/json'));

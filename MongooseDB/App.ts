@@ -75,15 +75,17 @@ class App {
     });
 
     //route to return JSON of all messages
-    router.get('/messages', (req, res) => {
+    router.get('/messages/', (req, res) => {
         console.log("Query all messages");
         this.Message.retrieveAll(res);
     });
 
     // route to post JSON of a message
-    router.post("/messages/:chatId", (req, res) => {
-        console.log("sending a message");
+    router.post("/messages/", (req, res) => {
+        console.log('testing to see if message was added to database');
+        console.log(req.body);
         this.Message.sendMessage(req.body);
+        res.send("201 CREATED");
     });
 
     this.expressApp.use('/', router);
