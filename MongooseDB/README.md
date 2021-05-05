@@ -32,7 +32,7 @@ Run the following commands in this directory to execute the server db and then t
 
 3. Open a new terminal (in this directory) and run Mongo shell
 
-   ```mongo```
+   ```mongo --port 3000 --authenticationDatabase admin```
 
 4. Populate the DB server with sample data in Mongo shell
 
