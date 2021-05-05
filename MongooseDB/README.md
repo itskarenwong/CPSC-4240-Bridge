@@ -37,9 +37,9 @@ Run the following commands in this directory to execute the server db and then t
 4. Populate the DB server with sample data in Mongo shell
 
     ``` bash
-    > load ('createDB/bridgeData.js');
-    > load ('createDB/createAdminUser.js');
-    > exit
+    load ('createDB/bridgeData.js');
+    load ('createDB/createAdminUser.js');
+    exit
     ```
 
 5. Install npm packages (if you haven't completed this step before)

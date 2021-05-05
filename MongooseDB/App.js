@@ -1,15 +1,17 @@
 "use strict";
 exports.__esModule = true;
+exports.App = void 0;
+//import * as path from 'path';
 var express = require("express");
 var logger = require("morgan");
+//import * as mongodb from 'mongodb';
+//import * as url from 'url';
 var bodyParser = require("body-parser");
 //var MongoClient = require('mongodb').MongoClient;
 //var Q = require('q');
-var ChatModel_1 = require("./model/ChatModel");
-var FriendListModel_1 = require("./model/FriendListModel");
-var UserModel_1 = require("./model/UserModel");
-var MessageModel_1 = require("./model/MessageModel");
-
+var ListModel_1 = require("./model/ListModel");
+var TaskModel_1 = require("./model/TaskModel");
+//import {DataAccess} from './DataAccess';
 // Creates and configures an ExpressJS web server.
 var App = /** @class */ (function () {
     //Run configuration methods on the Express instance.
@@ -17,11 +19,9 @@ var App = /** @class */ (function () {
         this.expressApp = express();
         this.middleware();
         this.routes();
-        this.idGenerator = 100;
-        this.Chat = new ChatModel_1.ChatModel();
-        this.FriendListModel_1 = new FriendListModel_1.FriendListModel();
-        this.UserModel_1 = new UserModel_1.UserModel();
-        this.MessageModel_1 = new MessageModel_1.MessageModel();
+        this.idGenerator = 102;
+        this.Lists = new ListModel_1.ListModel();
+        this.Tasks = new TaskModel_1.TaskModel();
     }
     // Configure Express middleware.
     App.prototype.middleware = function () {
@@ -41,7 +41,7 @@ var App = /** @class */ (function () {
         router.post('/app/list/', function (req, res) {
             console.log(req.body);
             var jsonObj = req.body;
-            jsonObj.listId = _this.idGenerator;
+            //jsonObj.listId = this.idGenerator;
             _this.Lists.model.create([jsonObj], function (err) {
                 if (err) {
                     console.log('object creation failed');
@@ -58,6 +58,10 @@ var App = /** @class */ (function () {
         router.get('/app/list/', function (req, res) {
             console.log('Query All list');
             _this.Lists.retrieveAllLists(res);
+        });
+        router.get('/app/listcount', function (req, res) {
+            console.log('Query the number of list elements in db');
+            _this.Lists.retrieveListCount(res);
         });
         this.expressApp.use('/', router);
         this.expressApp.use('/app/json/', express.static(__dirname + '/app/json'));
