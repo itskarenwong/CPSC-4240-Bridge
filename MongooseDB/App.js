@@ -67,8 +67,13 @@ var App = /** @class */ (function () {
         //route to return JSON of messages by chat
         router.get("/messages/:chatId", function (req, res) {
             var id = req.params.chatId;
-            console.log("Query messages from chat:" + id);
+            console.log("Query messages from chatId:" + id);
             _this.Message.retrieveAllMessages(res, { chatId: id });
+        });
+        router.get("/messages/message/:messageId", function (req, res) {
+            var id = req.params.messageId;
+            console.log("Query a single message:" + id);
+            _this.Message.retrieveMessage(res, { messageId: id });
         });
         //route to return JSON of all messages
         router.get("/messages", function (req, res) {

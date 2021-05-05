@@ -62,6 +62,13 @@ class MessageModel {
     });
   }
 
+  public retrieveMessage(response: any, filter: Object) {
+    var query = this.model.findOne(filter);
+    query.exec((err, item) => {
+      response.json(item);
+    });
+  }
+
   public retrieveChat(response: any, filter: Object) {
     var query = this.model.findOne(filter);
     query.exec((err, item) => {

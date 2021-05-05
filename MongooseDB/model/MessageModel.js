@@ -47,6 +47,12 @@ var MessageModel = /** @class */ (function () {
             response.json(itemArray);
         });
     };
+    MessageModel.prototype.retrieveMessage = function (response, filter) {
+        var query = this.model.findOne(filter);
+        query.exec(function (err, item) {
+            response.json(item);
+        });
+    };
     MessageModel.prototype.retrieveChat = function (response, filter) {
         var query = this.model.findOne(filter);
         query.exec(function (err, item) {
