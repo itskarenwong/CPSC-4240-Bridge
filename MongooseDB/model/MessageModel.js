@@ -18,7 +18,8 @@ var MessageModel = /** @class */ (function () {
             userId: Number,
             friendId: Number,
             dateCreated: Date,
-            language: String,
+            languageTo: String,
+            languageFrom: String,
             messageId: Number,
             chatId: Number
         }, { collection: "messages" });
