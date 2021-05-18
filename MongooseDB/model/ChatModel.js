@@ -44,6 +44,12 @@ var ChatModel = /** @class */ (function () {
             return true;
         });
     };
+    ChatModel.prototype.retrieveAllChatsByUserId = function (response, filter) {
+        var query = this.model.find({ "users.userId": filter });
+        query.exec(function (err, itemArray) {
+            response.json(itemArray);
+        });
+    };
     return ChatModel;
 }());
 exports.ChatModel = ChatModel;

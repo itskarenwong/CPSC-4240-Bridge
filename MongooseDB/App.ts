@@ -69,6 +69,13 @@ class App {
       this.User.retrieveUser(res, { userId: id });
     });
 
+    //route to return JSON of all friends for a single user
+    router.get("/users/:userId/friends", (req, res) => {
+        var id = req.params.userId;
+        console.log("Query all friends for userId: " + id);
+        this.FriendList.retrieveAllFriendsByUserId(res, { userId: id });
+    });
+
     // route to return JSON of chat objects
     router.get("/chats", (req, res) => {
       console.log("Query all chats:");
@@ -105,10 +112,17 @@ class App {
     });
 
     //route to return JSON of all messages from single user
-    router.get("users/:userId/messages", (req, res) => {
+    router.get("/users/:userId/messages", (req, res) => {
       var id = req.params.userId;
       console.log("Query all messages for userId: " + id);
       this.Message.retrieveAllMessagesByUserId(res, { userId: id });
+    });
+
+    //route to return JSON of all chats from single user
+    router.get("/users/:userId/chats", (req, res) => {
+      var id = req.params.userId;
+      console.log("Query all chats for userId: " + id);
+      this.Chat.retrieveAllChatsByUserId(res, id);
     });
 
     // route to post JSON of a message

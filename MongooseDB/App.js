@@ -53,6 +53,12 @@ var App = /** @class */ (function () {
             console.log("Query a user with id:" + id);
             _this.User.retrieveUser(res, { userId: id });
         });
+        //route to return JSON of all friends for a single user
+        router.get("/users/:userId/friends", function (req, res) {
+            var id = req.params.userId;
+            console.log("Query all friends for userId: " + id);
+            _this.FriendList.retrieveAllFriendsByUserId(res, { userId: id });
+        });
         // route to return JSON of chat objects
         router.get("/chats", function (req, res) {
             console.log("Query all chats:");
@@ -70,7 +76,7 @@ var App = /** @class */ (function () {
             console.log("Query messages from chatId:" + id);
             _this.Message.retrieveAllMessagesByChatId(res, { chatId: id });
         });
-        router.get("messages/:messageId/chats/:chatId/", function (req, res) {
+        router.get("chats/:chatId/messages/:messageId", function (req, res) {
             var chat_id = req.params.chatId;
             var message_id = req.params.messageId;
             console.log("Query messageId " + message_id + " from chatId:" + chat_id);
@@ -86,10 +92,16 @@ var App = /** @class */ (function () {
             _this.Message.retrieveAllMessages(res);
         });
         //route to return JSON of all messages from single user
-        router.get("messages/users/:userId", function (req, res) {
+        router.get("/users/:userId/messages", function (req, res) {
             var id = req.params.userId;
             console.log("Query all messages for userId: " + id);
             _this.Message.retrieveAllMessagesByUserId(res, { userId: id });
+        });
+        //route to return JSON of all chats from single user
+        router.get("/users/:userId/chats", function (req, res) {
+            var id = req.params.userId;
+            console.log("Query all chats for userId: " + id);
+            _this.Chat.retrieveAllChatsByUserId(res, id);
         });
         // route to post JSON of a message
         router.post("/messages/", function (req, res) {

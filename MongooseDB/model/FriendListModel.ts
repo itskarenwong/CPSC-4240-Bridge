@@ -33,11 +33,13 @@ class FriendListModel {
     );
   }
 
-  public retrieveFriendListDetails(response: any, filter: Object) {
+  // Get all friends for a single user
+  public retrieveAllFriendsByUserId(response:any, filter:Object){
     var query = this.model.findOne(filter);
-    query.exec((err, itemArray) => {
-      response.json(itemArray);
+    query.exec ( (err, itemArray) => {
+        response.json(itemArray);
     });
   }
+
 }
 export { FriendListModel };

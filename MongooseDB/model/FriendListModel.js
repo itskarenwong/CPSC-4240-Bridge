@@ -23,7 +23,7 @@ var FriendListModel = /** @class */ (function () {
     FriendListModel.prototype.createModel = function () {
         this.model = mongooseConnection.model("FriendList", this.schema);
     };
-    FriendListModel.prototype.retrieveFriendListDetails = function (response, filter) {
+    FriendListModel.prototype.retrieveAllFriendsByUserId = function (response, filter) {
         var query = this.model.findOne(filter);
         query.exec(function (err, itemArray) {
             response.json(itemArray);

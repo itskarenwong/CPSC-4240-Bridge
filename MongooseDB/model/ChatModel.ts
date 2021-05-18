@@ -52,5 +52,13 @@ class ChatModel {
       return true;
     });
   }
+
+  public retrieveAllChatsByUserId(response:any, filter:Object){
+    var query = this.model.find({"users.userId": filter});
+    query.exec ( (err, itemArray) => {
+        response.json(itemArray);
+    });
+  }
+
 }
 export { ChatModel };
