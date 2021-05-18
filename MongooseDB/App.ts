@@ -88,18 +88,27 @@ class App {
       console.log("Query messages from chatId:" + id);
       this.Message.retrieveAllMessagesByChatId(res, { chatId: id });
     });
-
+    router.get("chats/:chatId/messages/:messageId", (req, res) => {
+      var chat_id = req.params.chatId;
+      var message_id = req.params.messageId;
+      console.log("Query messageId " + message_id + " from chatId:" + chat_id);
+      this.Message.retrieveMessageFromChat(res, { messageId: message_id, chatId: chat_id });
+    });
     //route to return JSON of a single message
     router.get("/messages/:messageId", (req, res) => {
       var id = req.params.messageId;
       console.log("Query a single message:" + id);
       this.Message.retrieveMessage(res, { messageId: id });
     });
-
-    //route to return JSON of all messages
     router.get("/messages", (req, res) => {
-      console.log("Query all messages");
       this.Message.retrieveAllMessages(res);
+    });
+
+    //route to return JSON of all messages from single user
+    router.get("users/:userId/messages", (req, res) => {
+      var id = req.params.userId;
+      console.log("Query all messages for userId: " + id);
+      this.Message.retrieveAllMessagesByUserId(res, { userId: id });
     });
 
     // route to post JSON of a message
@@ -109,7 +118,12 @@ class App {
       this.Message.sendMessage(req.body);
       res.send("201 CREATED");
     });
-
+    router.post("/chats/", (req, res) => {
+      console.log("testing to see if chat was added to database");
+      console.log(req.body);
+      this.Chat.createChat(req.body);
+      res.send("201 CREATED");
+    });
     this.expressApp.use("/", router);
 
     this.expressApp.use("/app/json/", express.static(__dirname + "/app/json"));

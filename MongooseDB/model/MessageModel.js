@@ -36,7 +36,19 @@ var MessageModel = /** @class */ (function () {
             return true;
         });
     };
+    MessageModel.prototype.retrieveMessageFromChat = function (response, filter) {
+        var query = this.model.findOne(filter);
+        query.exec(function (err, item) {
+            response.json(item);
+        });
+    };
     MessageModel.prototype.retrieveAllMessagesByChatId = function (response, filter) {
+        var query = this.model.find(filter);
+        query.exec(function (err, itemArray) {
+            response.json(itemArray);
+        });
+    };
+    MessageModel.prototype.retrieveAllMessagesByUserId = function (response, filter) {
         var query = this.model.find(filter);
         query.exec(function (err, itemArray) {
             response.json(itemArray);

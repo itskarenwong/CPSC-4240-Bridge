@@ -70,22 +70,38 @@ var App = /** @class */ (function () {
             console.log("Query messages from chatId:" + id);
             _this.Message.retrieveAllMessagesByChatId(res, { chatId: id });
         });
+        router.get("messages/:messageId/chats/:chatId/", function (req, res) {
+            var chat_id = req.params.chatId;
+            var message_id = req.params.messageId;
+            console.log("Query messageId " + message_id + " from chatId:" + chat_id);
+            _this.Message.retrieveMessageFromChat(res, { messageId: message_id, chatId: chat_id });
+        });
         //route to return JSON of a single message
         router.get("/messages/:messageId", function (req, res) {
             var id = req.params.messageId;
             console.log("Query a single message:" + id);
             _this.Message.retrieveMessage(res, { messageId: id });
         });
-        //route to return JSON of all messages
         router.get("/messages", function (req, res) {
-            console.log("Query all messages");
             _this.Message.retrieveAllMessages(res);
+        });
+        //route to return JSON of all messages from single user
+        router.get("messages/users/:userId", function (req, res) {
+            var id = req.params.userId;
+            console.log("Query all messages for userId: " + id);
+            _this.Message.retrieveAllMessagesByUserId(res, { userId: id });
         });
         // route to post JSON of a message
         router.post("/messages/", function (req, res) {
             console.log("testing to see if message was added to database");
             console.log(req.body);
             _this.Message.sendMessage(req.body);
+            res.send("201 CREATED");
+        });
+        router.post("/chats/", function (req, res) {
+            console.log("testing to see if chat was added to database");
+            console.log(req.body);
+            _this.Chat.createChat(req.body);
             res.send("201 CREATED");
         });
         this.expressApp.use("/", router);

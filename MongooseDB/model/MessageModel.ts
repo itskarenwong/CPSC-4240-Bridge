@@ -48,8 +48,19 @@ class MessageModel {
       return true;
     });
   }
-
+  public retrieveMessageFromChat(response:any, filter:Object) {
+    var query = this.model.findOne(filter);
+    query.exec ( (err, item) => {
+        response.json(item);
+    });
+  }
   public retrieveAllMessagesByChatId(response: any, filter: Object) {
+    var query = this.model.find(filter);
+    query.exec((err, itemArray) => {
+      response.json(itemArray);
+    });
+  }
+  public retrieveAllMessagesByUserId(response: any, filter: Object) {
     var query = this.model.find(filter);
     query.exec((err, itemArray) => {
       response.json(itemArray);

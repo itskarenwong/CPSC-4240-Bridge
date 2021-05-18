@@ -43,5 +43,14 @@ class ChatModel {
         response.json(item);
     });
   }
+  public createChat(message): any {
+    this.model.create([message], (err) => {
+      if (err) {
+        console.log("object creation failed");
+        return false;
+      }
+      return true;
+    });
+  }
 }
 export { ChatModel };

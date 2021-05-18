@@ -89,7 +89,7 @@ message.insert(
         dateCreated: Date.now(),
         languageTo: "en",
         languageFrom: "id",
-        messageId: 2,
+        messageId: 1,
         chatId: 2
     }
 )
@@ -103,7 +103,7 @@ message.insert(
         dateCreated: Date.now(),
         languageTo: "fr",
         languageFrom: "en",
-        messageId: 3,
+        messageId: 1,
         chatId: 3
     }
 )
@@ -117,7 +117,7 @@ message.insert(
         dateCreated: Date.now(),
         languageTo: "es",
         languageFrom: "fr",
-        messageId: 4,
+        messageId: 1,
         chatId: 4
     }
 )
@@ -131,7 +131,7 @@ message.insert(
         date: Date.now(),
         languageTo: "es",
         languageFrom: "id",
-        messageId: 5,
+        messageId: 2,
         chatId: 1
     }
 )

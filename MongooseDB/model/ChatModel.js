@@ -35,6 +35,15 @@ var ChatModel = /** @class */ (function () {
             response.json(item);
         });
     };
+    ChatModel.prototype.createChat = function (message) {
+        this.model.create([message], function (err) {
+            if (err) {
+                console.log("object creation failed");
+                return false;
+            }
+            return true;
+        });
+    };
     return ChatModel;
 }());
 exports.ChatModel = ChatModel;
